@@ -5,7 +5,10 @@
 #
 # MANDATORY BITS TO READ BEFORE TO LAUNCH THIS SCRIPT:
 #
-# 1) LAUNCH THIS SCRIPT USING sudo AND nohup!!!
+# 0) THE SCRIPT NEEDS TO BE LAUNCHED WITHOUT nohup AND WILL PROMPT
+#    THE USER SOME QUESTIONS, SO THE USER HAS TO BE CLOSE TO THE SYSTEM
+#
+# 1) LAUNCH THIS SCRIPT USING sudo!!!
 #
 # 2) EDIT THE FILE /etc/apt/source.list AND UNCOMMENT THE 'partner' REPOSITORIES
 #
@@ -15,9 +18,9 @@
 #    sudo dpkg --get-selections > packages.txt
 #    OR YOU CAN USE THE ONE IN THE FOLDER CONTAINING THIS SCRIPT
 #
-# 4) CHECK THE LAST VERSION AND ADDRESS OF BLASTPLUS TO DOWNLOAD
-#    CURRENTLY THIS HAS TO BE DONE MANUALLY FROM THE FTP SITE
-#    THEN YOU CAN CHANGE THE RELATIVE VALUES IN THE LINES BELOW
+# 4) CHECK THE LAST VERSION AND ADDRESS OF BLASTPLUS AND PAML TO DOWNLOAD
+#    CURRENTLY THIS HAS TO BE DONE MANUALLY FROM THE FTP SITE THEN YOU CAN
+#    CHANGE THE RELATIVE VALUES IN THE LINES BELOW
 #
 # RANDOM NOTES
 #
@@ -44,6 +47,8 @@
 
 apt-get update && apt-get upgrade
 
+apt-get -y install dselect
+
 # ADD THE REPOSITORIES
 echo '' >> /etc/apt/sources.list
 echo 'deb http://cran.at.r-project.org/bin/linux/ubuntu lucid/' >> /etc/apt/sources.list
@@ -55,11 +60,13 @@ apt-get update && apt-get upgrade
 
 # INSTALL APT PACKAGES
 dpkg --set-selections < packages.txt
-dselect install
+# NEXT LINE WILL ASK INTERACTIONS WITH THE USER
+dselect
 apt-get update && apt-get upgrade
 apt-get -y autoremove
 
 # INSTALL MS OFFICE FONTS
+# NEXT LINE WILL ASK INTERACTION WITH THE USER
 apt-get -y install msttcorefonts
 fc-cache -fv
 
@@ -117,7 +124,7 @@ make install
 
 # PAML http://abacus.gene.ucl.ac.uk/software/paml.html
 cd ~/src
-wget http://abacus.gene.ucl.ac.uk/software/paml4.4d.tar.gz
+wget http://abacus.gene.ucl.ac.uk/software/paml4.4e.tar.gz
 tar -zxvf paml4.4d.tar.gz
 cd paml44/
 rm bin/*.exe
