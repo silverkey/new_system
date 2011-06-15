@@ -60,7 +60,13 @@ apt-get update && apt-get upgrade
 
 # INSTALL APT PACKAGES
 dpkg --set-selections < packages.txt
+# DONE MULTIPLE TIMES BECAUSE SOME PROBLEM MAY CAUSE 
+# SOME PACKAGES LOSS
 # NEXT LINE WILL ASK INTERACTIONS WITH THE USER
+dselect
+dselect
+dselect
+dselect
 dselect
 apt-get update && apt-get upgrade
 apt-get -y autoremove
