@@ -1,0 +1,7 @@
+sudo apt-get install libdbd-mysql libmysqlclient-dev libxml2-dev libcurl4-openssl-dev
+
+edgeR
+DESeq
+DESeq2
+GenomicFeatures
+

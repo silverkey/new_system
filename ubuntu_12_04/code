@@ -1,0 +1,36 @@
+# Added by Remo
+# See the following web pages:
+# http://nebc.nerc.ac.uk/tools/bio-linux/other-bl-docs/package-repository
+# http://cran.r-project.org/bin/linux/ubuntu/
+deb http://cran.at.r-project.org/bin/linux/ubuntu precise/
+deb http://nebc.nerc.ac.uk/bio-linux/ unstable bio-linux
+deb http://ppa.launchpad.net/nebc/bio-linux/ubuntu precise main
+deb-src http://ppa.launchpad.net/nebc/bio-linux/ubuntu precise main
+
+sudo nano /etc/apt/sources.list
+sudo apt-get update
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+sudo apt-get install bio-linux-keyring
+
+sudo apt-get update
+sudo apt-get upgrade
+
+nohup sudo apt-get --assume-yes --force-yes install $(cat packages_to_install) &
+
+wget http://downloads.sourceforge.net/project/trinityrnaseq/trinityrnaseq_r2013_08_14.tgz
+
+
+sudo: unable to resolve host sm2
+
+
+http://cran.r-project.org/index.html
+http://www.gnu.org/software/octave/
+http://freemat.sourceforge.net/
+http://www.scilab.org/
+
+http://amca01.wordpress.com/2011/08/31/the-best-matlab-alternative/
+http://en.wikipedia.org/wiki/MATLAB#Alternatives
+http://en.wikipedia.org/wiki/GNU_Octave#Matlab
+http://userpages.umbc.edu/~gobbert/papers/SharmaGobbertTR2010.pdf
+
+http://www.dedoimedo.com/computers/scientific-new.html

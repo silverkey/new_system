@@ -1,0 +1,35 @@
+#----------------------------------------------------------------------------------------------
+1) Aprire da root (sudo) il file /etc/apt/sources.list ed eseguire le seguenti modifiche:
+
+- Decommentare tutte le righe che iniziano per "deb-" tranne le prime 3 o 4 (quelle che contengono parentesi quadre)
+
+- Aggiungere in coda le seguenti righe:
+
+# Added by Remo
+# See the following web pages:
+# http://nebc.nerc.ac.uk/tools/bio-linux/other-bl-docs/package-repository
+# http://cran.r-project.org/bin/linux/ubuntu/
+deb http://cran.at.r-project.org/bin/linux/ubuntu precise/
+deb http://nebc.nerc.ac.uk/bio-linux/ unstable bio-linux
+deb http://ppa.launchpad.net/nebc/bio-linux/ubuntu precise main
+deb-src http://ppa.launchpad.net/nebc/bio-linux/ubuntu precise main
+#----------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------
+2) Eseguire i seguenti comandi (non preoccuparti se ricevi degli errori al primo comando)
+
+sudo apt-get update
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+sudo apt-get install bio-linux-keyring
+sudo apt-get update
+sudo apt-get upgrade
+#----------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------
+3) Installare tutti i pacchetti indicati nel file packages_to_install con il seguente comando:
+
+sudo apt-get --assume-yes --force-yes install $(cat packages_to_install)
+#----------------------------------------------------------------------------------------------
+
